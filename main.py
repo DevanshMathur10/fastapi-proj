@@ -63,6 +63,10 @@ def calculate_reward(contest_id: int,percentage: Optional[float] = None, complet
 #     # Return the response
 #     return ContestOutput(reward=reward, percentage=percentage, completion_time=completion_time)
 
+@app.get("/")
+def index():
+    return "Input Format : BASE_URL/calculate_reward/?contest_id=X&percentage=X&completion_time=X. Use either percentage or completion_time and contest_id should be either 1 or 2"
+
 @app.get("/calculate_reward/")
 async def calculate_reward_get(contest_id: int, percentage: Optional[float] = None, completion_time: Optional[float] = None) -> ContestOutput:
     # Validate that at least one of percentage or completion_time is provided
